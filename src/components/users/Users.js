@@ -12,7 +12,7 @@ const Users = () => {
   } else {
     return (
       <div style={userStyle}>
-        {users.map((user) => (
+        {githubContext.users.map((user) => (
           <UserItem key={user.id} user={user} />
         ))}
       </div>
