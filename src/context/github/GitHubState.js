@@ -31,6 +31,18 @@ const GithubState = (props) => {
       payload: res.data.items,
     });
   };
+
+  //Serach for single github user
+  const getUser = async (username) => {
+    setLoading();
+    const res = await axios.get(`https://api.github.com/users/${username}`);
+    // console.log(res.data);
+    dispatch({
+      type: GET_USER,
+      payload: res.data,
+    });
+  };
+
   const clearUsers = () =>
     dispatch({
       type: CLEAR_USERS,
@@ -46,6 +58,7 @@ const GithubState = (props) => {
         loading: state.loading,
         searchUsers,
         clearUsers,
+        getUser,
       }}
     >
       {props.children}
